@@ -365,7 +365,6 @@ def console() -> None:
         print("2. Просмотреть карточку по номеру")
         print("3. Изменить данные карточки")
         print("4. Списать карточку с учёта")
-        print("5. Показать все карточки")
         print("0. Выход")
 
         try:
@@ -489,31 +488,6 @@ def console() -> None:
             except ValueError as e:
                 print(f"Ошибка: {e}")
 
-        elif choice == 5:
-            cards = inventory.list_cards()
-            if not cards:
-                print("\nНет карточек в системе")
-            else:
-                print(f"\nВСЕ КАРТОЧКИ ({len(cards)})")
-                for card in cards:
-                    status = inventory.STATUSES.get(card["status"], card["status"])
-                    print(
-                        f"№{card['number']}: {card['name']} | "
-                        f"{card['quantity']} | "
-                        f"{status} | "
-                        f"{card['article']} | "
-                        f"{card['supplier']} | "
-                        f"{card['cost']} | "
-                        f"{card['location']} | "
-                        f"{card['arrival_date']} | "
-                        f"{card['responsible']}"
-                    )
-
-        else:
-            print("\nНекорректный выбор. Выберите число от 0 до 5.")
-
-        input("\nНажмите Enter для продолжения.")
-
-
 if __name__ == "__main__":
     console()
+
